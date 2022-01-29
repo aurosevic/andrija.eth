@@ -1,0 +1,42 @@
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.cool-text {
+    text-align: center;
+    color:rgb(129, 129, 228);
+    color:rgb(130, 169, 249);
+    font-family: 'Courier New';
+}
+
+body {
+    background-image: url('data/hero.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 19px;
+}
+
+a {
+    color: rgb(130, 169, 249);
+}
+
+a:visited {
+    color: rgb(164, 252, 245);
+}
+
+a:hover, a:active, a:focus {
+    color: rgb(205, 174, 251);
+}
