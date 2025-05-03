@@ -1,3 +1,30 @@
+:root {
+    --dark-bg: radial-gradient(circle at center, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+    --light-bg: radial-gradient(circle at center, #f5f7fa 0%, #e4e8f0 50%, #dfe6e9 100%);
+    --dark-text: #1b262c;
+    --light-text: rgb(130, 169, 249);
+    --light-link: rgb(130, 169, 249);
+    --dark-link: #3d5af1;
+    --light-visited: rgb(164, 252, 245);
+    --dark-visited: #1b9999;
+    --light-hover: rgb(205, 174, 251);
+    --dark-hover: #8c62de;
+    --transition-duration: 4s; /* Changed from 0.8s to 2s */
+}
+
+
+html {
+    transition: color var(--transition-duration);
+}
+
+html.dark-theme {
+    color-scheme: dark;
+}
+
+html.light-theme {
+    color-scheme: light;
+}
+
 .container {
     position: absolute;
     top: 50%;
@@ -5,13 +32,21 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+}
+
+.dark-theme .cool-text {
+    color: var(--light-text);
+}
+
+.light-theme .cool-text {
+    color: var(--dark-text);
 }
 
 .cool-text {
     text-align: center;
-    color:rgb(129, 129, 228);
-    color:rgb(130, 169, 249);
     font-family: 'Courier New';
+    transition: color var(--transition-duration);
 }
 
 .icon-container {
@@ -25,11 +60,21 @@
 }
 
 body {
-    background: radial-gradient(circle at center, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+    transition: background var(--transition-duration);
     background-attachment: fixed;
     background-size: 100% 100%;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.dark-theme body {
+    background: var(--dark-bg);
+}
+
+.light-theme body {
+    background: var(--light-bg);
 }
 
 h1 {
@@ -40,14 +85,137 @@ p {
     font-size: 19px;
 }
 
+.dark-theme a {
+    color: var(--light-link);
+}
+
+.light-theme a {
+    color: var(--dark-link);
+}
+
+.dark-theme a:visited {
+    color: var(--light-visited);
+}
+
+.light-theme a:visited {
+    color: var(--dark-visited);
+}
+
+.dark-theme a:hover, .dark-theme a:active, .dark-theme a:focus {
+    color: var(--light-hover);
+}
+
+.light-theme a:hover, .light-theme a:active, .light-theme a:focus {
+    color: var(--dark-hover);
+}
+
 a {
-    color: rgb(130, 169, 249);
+    transition: color var(--transition-duration);
 }
 
-a:visited {
-    color: rgb(164, 252, 245);
+/* Theme Switch Styling */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
 }
 
-a:hover, a:active, a:focus {
-    color: rgb(205, 174, 251);
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: rgba(73, 84, 100, 0.5);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.sun-icon, .moon-icon {
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+}
+
+.sun-icon {
+    color: #f1c40f;
+    margin-left: auto;
+}
+
+.moon-icon {
+    color: #f1f1f1;
+}
+
+input:checked + .slider {
+    background-color: rgba(130, 169, 249, 0.5);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Theme Transition Animation */
+.theme-transition-circle {
+    position: fixed;
+    top: 37px; /* Position aligned with switch */
+    right: 50px; /* Center aligned with switch */
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    will-change: width, height, opacity;
+    /* Important: position the circle element at its center point */
+    transform: translate(50%, -50%);
+}
+
+.theme-transition-circle.animate {
+    animation: circleExpand 2s ease-out forwards;
+}
+
+@keyframes circleExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        width: 400vmax;
+        height: 400vmax;
+        opacity: 0;
+    }
 }
