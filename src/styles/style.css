@@ -201,7 +201,7 @@ input:checked + .slider:before {
 }
 
 .theme-transition-circle.animate {
-    animation: circleExpand 2s ease-out forwards;
+    animation: circleExpand var(--transition-duration) ease-out forwards;
 }
 
 @keyframes circleExpand {
