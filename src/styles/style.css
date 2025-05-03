@@ -1,6 +1,6 @@
 :root {
     --dark-bg: #16213e; /* Solid color instead of gradient */
-    --light-bg: #f5f7fa; /* Solid color instead of gradient */
+    --light-bg: #dbe4ef; /* Solid color instead of gradient */
     --dark-text: #1b262c;
     --light-text: rgb(130, 169, 249);
     --light-link: rgb(130, 169, 249);
@@ -9,7 +9,7 @@
     --dark-visited: #1b9999;
     --light-hover: rgb(205, 174, 251);
     --dark-hover: #8c62de;
-    --transition-duration: 2s;
+    --transition-duration: 1.5s;
 }
 
 
@@ -215,18 +215,6 @@ input:checked + .slider:before {
         height: 400vmax;
         opacity: 1;
     }
-}
-/* Add this to your style.css file */
-
-/* Special class that prevents text transitions during theme change */
-html.theme-changing,
-html.theme-changing *,
-html.theme-changing *:before,
-html.theme-changing *:after {
-    /* Disable all transitions that would interfere with our circle animation */
-    transition: none !important;
-    /* Let the text color be controlled by the keyframe-based animation instead */
-    animation: textColorChange var(--transition-duration) ease-out forwards;
 }
 
 /* For light theme transitions */

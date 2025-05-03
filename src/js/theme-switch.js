@@ -1,13 +1,16 @@
 // Theme switching functionality
 document.addEventListener('DOMContentLoaded', function() {
     const toggleSwitch = document.querySelector('#checkbox');
-    const currentTheme = localStorage.getItem('theme') || 'dark-theme';
     
-    // Set the initial theme
+    // Always use dark theme by default, only change if explicitly set to light in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    const currentTheme = savedTheme === 'light-theme' ? 'light-theme' : 'dark-theme';
+    
+    // Set the initial theme without animation
     document.documentElement.className = currentTheme;
     toggleSwitch.checked = currentTheme === 'light-theme';
     
-    // Theme switch event handler
+    // Theme switch event handler - only triggered by user interaction
     toggleSwitch.addEventListener('change', function() {
         const targetTheme = this.checked ? 'light-theme' : 'dark-theme';
         const currentThemeClass = this.checked ? 'dark-theme' : 'light-theme';
@@ -40,13 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start animation in the next frame
         requestAnimationFrame(() => {
             newCircle.classList.add('animate');
-        });
-
-        // Cleanup when animation ends
-        newCircle.addEventListener('animationend', function() {
-            // Remove special class to re-enable future transitions
-            document.documentElement.classList.remove('theme-changing');
-            newCircle.remove();
         });
 
         // Failsafe cleanup
