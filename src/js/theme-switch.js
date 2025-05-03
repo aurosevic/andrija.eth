@@ -1,53 +1,61 @@
-// scripts/theme-switch.js
+// Theme switching functionality
 document.addEventListener('DOMContentLoaded', function() {
     const toggleSwitch = document.querySelector('#checkbox');
-    const transitionCircle = document.querySelector('.theme-transition-circle');
     const currentTheme = localStorage.getItem('theme') || 'dark-theme';
-
-    // Set an initial theme
+    
+    // Set the initial theme
     document.documentElement.className = currentTheme;
     toggleSwitch.checked = currentTheme === 'light-theme';
-
+    
     // Theme switch event handler
     toggleSwitch.addEventListener('change', function() {
         const targetTheme = this.checked ? 'light-theme' : 'dark-theme';
-        
+        const currentThemeClass = this.checked ? 'dark-theme' : 'light-theme';
+
         // Create a new circle element for this animation
         const newCircle = document.createElement('div');
         newCircle.classList.add('theme-transition-circle');
-        
-        // Set the correct background for the animation
-        if (targetTheme === 'light-theme') {
-            newCircle.style.background = 'var(--light-bg)';
-            newCircle.style.boxShadow = '0 0 100px 50px var(--light-bg)';
-        } else {
-            newCircle.style.background = 'var(--dark-bg)';
-            newCircle.style.boxShadow = '0 0 100px 50px var(--dark-bg)';
-        }
-        
-        // Add the new circle to the DOM
+
+        // Important: Set the background to the TARGET theme color
+        // This ensures the animation reveals the new theme color
+        newCircle.style.background = targetTheme === 'light-theme' ?
+                                    'var(--light-bg)' :
+                                    'var(--dark-bg)';
+        newCircle.style.boxShadow = targetTheme === 'light-theme' ?
+                                   '0 0 100px 50px var(--light-bg)' :
+                                   '0 0 100px 50px var(--dark-bg)';
+
+        // Add a special class to prevent text transitions
+        document.documentElement.classList.add('theme-changing');
+
+        // Add the circle to the DOM
         document.body.appendChild(newCircle);
-        
-        // Start animation in the next frame to ensure the element is properly rendered
+
+        // Apply the theme class immediately, before animation starts.
+        // This ensures the page is already in the new theme state under the expanding circle
+        document.documentElement.classList.remove(currentThemeClass);
+        document.documentElement.classList.add(targetTheme);
+        localStorage.setItem('theme', targetTheme);
+
+        // Start animation in the next frame
         requestAnimationFrame(() => {
             newCircle.classList.add('animate');
         });
-        
-        // Change theme immediately
-        document.documentElement.className = targetTheme;
-        localStorage.setItem('theme', targetTheme);
-        
-        // Clean up after animation completes
+
+        // Cleanup when animation ends
         newCircle.addEventListener('animationend', function() {
+            // Remove special class to re-enable future transitions
+            document.documentElement.classList.remove('theme-changing');
             newCircle.remove();
         });
-        
-        // Failsafe: Remove the circle after a set time in case the animation event fails
-        const animDuration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-duration')) * 1000;
+
+        // Failsafe cleanup
+        const animDuration = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-duration'));
         setTimeout(() => {
             if (document.body.contains(newCircle)) {
+                document.documentElement.classList.remove('theme-changing');
                 newCircle.remove();
             }
-        }, animDuration + 500);
+        }, animDuration * 1000 + 500);
     });
 });

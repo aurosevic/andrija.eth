@@ -1,6 +1,6 @@
 :root {
-    --dark-bg: radial-gradient(circle at center, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
-    --light-bg: radial-gradient(circle at center, #f5f7fa 0%, #e4e8f0 50%, #dfe6e9 100%);
+    --dark-bg: #16213e; /* Solid color instead of gradient */
+    --light-bg: #f5f7fa; /* Solid color instead of gradient */
     --dark-text: #1b262c;
     --light-text: rgb(130, 169, 249);
     --light-link: rgb(130, 169, 249);
@@ -9,7 +9,7 @@
     --dark-visited: #1b9999;
     --light-hover: rgb(205, 174, 251);
     --dark-hover: #8c62de;
-    --transition-duration: 4s; /* Changed from 0.8s to 2s */
+    --transition-duration: 2s;
 }
 
 
@@ -210,12 +210,77 @@ input:checked + .slider:before {
         height: 0;
         opacity: 1;
     }
-    85% {
-        opacity: 0.7;
-    }
     100% {
         width: 400vmax;
         height: 400vmax;
-        opacity: 0;
+        opacity: 1;
+    }
+}
+/* Add this to your style.css file */
+
+/* Special class that prevents text transitions during theme change */
+html.theme-changing,
+html.theme-changing *,
+html.theme-changing *:before,
+html.theme-changing *:after {
+    /* Disable all transitions that would interfere with our circle animation */
+    transition: none !important;
+    /* Let the text color be controlled by the keyframe-based animation instead */
+    animation: textColorChange var(--transition-duration) ease-out forwards;
+}
+
+/* For light theme transitions */
+html.theme-changing.light-theme .cool-text {
+    animation-name: darkToLightText;
+}
+
+/* For dark theme transitions */
+html.theme-changing.dark-theme .cool-text {
+    animation-name: lightToDarkText;
+}
+
+/* Text color transition animations */
+@keyframes darkToLightText {
+    0% {
+        color: var(--light-text);
+    }
+    100% {
+        color: var(--dark-text);
+    }
+}
+
+@keyframes lightToDarkText {
+    0% {
+        color: var(--dark-text);
+    }
+    100% {
+        color: var(--light-text);
+    }
+}
+
+/* Similar animations for links */
+html.theme-changing.light-theme a {
+    animation-name: darkToLightLink;
+}
+
+html.theme-changing.dark-theme a {
+    animation-name: lightToDarkLink;
+}
+
+@keyframes darkToLightLink {
+    0% {
+        color: var(--light-link);
+    }
+    100% {
+        color: var(--dark-link);
+    }
+}
+
+@keyframes lightToDarkLink {
+    0% {
+        color: var(--dark-link);
+    }
+    100% {
+        color: var(--light-link);
     }
 }
