@@ -364,3 +364,52 @@ html.theme-changing.dark-theme a {
         margin: 0.5rem 0;
     }
 }
+/* Header Component Styles */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.3rem;
+}
+
+/* Keep nav menu centered on the page */
+.nav-menu {
+    position: static;
+    width: auto;
+}
+
+/* Keep theme switch at its current position */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding-top: 50px; /* Space for the theme switch */
+    }
+    
+    .nav-menu {
+        position: static;
+        top: auto;
+    }
+    
+    .theme-switch-wrapper {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+}
