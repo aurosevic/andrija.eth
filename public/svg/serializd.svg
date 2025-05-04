@@ -10,7 +10,7 @@
     rect { stroke: #ffffff; }
     @media (prefers-color-scheme: dark) {
     circle { fill: #ffffff; }
-    rect { fill: none; stroke: #000000; }
+    rect { fill: none; stroke: #16213e; }
     }
   </style>
   <circle

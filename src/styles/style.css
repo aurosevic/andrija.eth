@@ -1,6 +1,6 @@
 :root {
-    --dark-bg: #16213e; /* Solid color instead of gradient */
-    --light-bg: #dbe4ef; /* Solid color instead of gradient */
+    --dark-bg: #16213e;
+    --light-bg: #dbe4ef;
     --dark-text: #1b262c;
     --light-text: rgb(130, 169, 249);
     --light-link: rgb(130, 169, 249);
@@ -54,6 +54,11 @@ html.light-theme {
 
 .icon-container div {
     text-align: center;
+}
+
+/* Navigation Menu and Theme Switch Layout */
+body {
+    position: relative;
 }
 
 body {
@@ -113,9 +118,9 @@ a {
 /* Theme Switch Styling */
 .theme-switch-wrapper {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
-    z-index: 10;
+    top: 15px;
+    right: 20px;
+    z-index: 11;
 }
 
 .theme-switch {
@@ -201,7 +206,6 @@ input:checked + .slider:before {
     opacity: 0;
     pointer-events: none;
     will-change: width, height, opacity;
-    /* Important: position the circle element at its center point */
     transform: translate(50%, -50%);
 }
 
@@ -275,5 +279,88 @@ html.theme-changing.dark-theme a {
     }
     100% {
         color: var(--light-link);
+    }
+}
+
+/* Updated Navigation Menu Styles */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 4.3rem; /* Menu height */
+    align-items: center; /* Center items vertically */
+}
+
+.nav-menu li {
+    margin: 0 1.5em;
+}
+
+.nav-menu a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    transition: color var(--transition-duration);
+}
+
+.nav-menu a.active {
+    text-decoration: underline;
+}
+
+/* Apply main-text class styling to menu items */
+.dark-theme .nav-menu a {
+    color: var(--light-text);
+}
+
+.light-theme .nav-menu a {
+    color: var(--dark-text);
+}
+
+/* Ensure theme switch and navigation are aligned */
+/* Theme switch positioning - keep it on the right side */
+
+/* For responsive design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: relative;
+        top: 70px; /* Push menu below theme switch on small screens */
+    }
+
+    .theme-switch-wrapper {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+    }
+
+    .nav-menu ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-menu li {
+        margin: 5px 10px;
+    }
+}
+
+/* Responsive Navigation */
+@media (max-width: 600px) {
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-menu li {
+        margin: 0.5rem 0;
     }
 }
