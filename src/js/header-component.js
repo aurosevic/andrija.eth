@@ -46,11 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get current page path for navigation highlighting
     const currentPage = window.location.pathname.split('/').pop();
-    console.log('Andrija', currentPage);
 
     // Get all navigation links
     const navLinks = document.querySelectorAll('.nav-menu a');
-    console.log('Andrija', navLinks);
 
     // Highlight current page in navigation
     navLinks.forEach(link => {
