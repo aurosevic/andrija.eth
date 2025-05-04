@@ -113,16 +113,16 @@ a {
 /* Theme Switch Styling */
 .theme-switch-wrapper {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 2rem;
+    right: 2rem;
     z-index: 10;
 }
 
 .theme-switch {
     display: inline-block;
-    height: 34px;
+    height: 2.125em;
     position: relative;
-    width: 65px;
+    width: 4em;
 }
 
 .theme-switch input {
@@ -138,22 +138,22 @@ a {
     right: 0;
     top: 0;
     transition: .4s;
-    border-radius: 34px;
+    border-radius: 2.125em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 0 0.3125em;
 }
 
 .slider:before {
     background-color: #fff;
-    bottom: 4px;
+    bottom: 0.25em;
     content: "";
-    height: 26px;
+    height: 1.625em;
     left: auto;
     position: absolute;
     transition: .4s;
-    width: 26px;
+    width: 1.625em;
     border-radius: 50%;
     z-index: 2;
 }
@@ -186,14 +186,14 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(29px);
+    transform: translateX(1.75em);
 }
 
 /* Theme Transition Animation */
 .theme-transition-circle {
     position: fixed;
-    top: 37px; /* Position aligned with switch */
-    right: 50px; /* Center aligned with switch */
+    top: 2.3125rem; /* Position aligned with switch */
+    right: 3.125rem; /* Center aligned with switch */
     width: 0;
     height: 0;
     border-radius: 50%;
