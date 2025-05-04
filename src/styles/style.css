@@ -12,7 +12,6 @@
     --transition-duration: 1.5s;
 }
 
-
 html {
     transition: color var(--transition-duration);
 }
@@ -29,23 +28,21 @@ html.light-theme {
     position: absolute;
     top: 50%;
     left: 50%;
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     z-index: 1;
 }
 
-.dark-theme .cool-text {
+.dark-theme .main-text {
     color: var(--light-text);
 }
 
-.light-theme .cool-text {
+.light-theme .main-text {
     color: var(--dark-text);
 }
 
-.cool-text {
+.main-text {
     text-align: center;
-    font-family: 'Courier New';
+    font-family: 'Courier New', monospace;
     transition: color var(--transition-duration);
 }
 
@@ -125,7 +122,7 @@ a {
     display: inline-block;
     height: 34px;
     position: relative;
-    width: 60px;
+    width: 65px;
 }
 
 .theme-switch input {
@@ -153,7 +150,7 @@ a {
     bottom: 4px;
     content: "";
     height: 26px;
-    left: 4px;
+    left: auto;
     position: absolute;
     transition: .4s;
     width: 26px;
@@ -162,9 +159,17 @@ a {
 }
 
 .sun-icon, .moon-icon {
-    width: 24px;
-    height: 24px;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun-icon svg, .moon-icon svg {
+    width: 75%;
+    height: 75%;
 }
 
 .sun-icon {
@@ -181,7 +186,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(29px);
 }
 
 /* Theme Transition Animation */
@@ -218,12 +223,12 @@ input:checked + .slider:before {
 }
 
 /* For light theme transitions */
-html.theme-changing.light-theme .cool-text {
+html.theme-changing.light-theme .main-text {
     animation-name: darkToLightText;
 }
 
 /* For dark theme transitions */
-html.theme-changing.dark-theme .cool-text {
+html.theme-changing.dark-theme .main-text {
     animation-name: lightToDarkText;
 }
 

@@ -4,12 +4,13 @@
   height="64"
   fill="none"
   viewBox="0 0 64 64"
->    <style>
-        path { fill: #2C2D30; }
-        @media (prefers-color-scheme: dark) {
-        path { fill: #ffffff; }
-        }
-    </style>
+>
+  <style>
+    path { fill: #2C2D30; }
+    @media (prefers-color-scheme: dark) {
+    path { fill: #ffffff; }
+    }
+  </style>
 
   <path
     fill-rule="evenodd"
