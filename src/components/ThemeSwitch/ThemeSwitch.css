@@ -1,7 +1,6 @@
 .theme-switch-wrapper {
-    position: fixed;
-    top: 15px;
-    right: 20px;
+    display: flex;
+    align-items: center;
     z-index: 11;
 }
 
