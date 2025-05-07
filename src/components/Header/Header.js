@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import './Header.css';
@@ -6,6 +6,8 @@ import './Header.css';
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const navRef = useRef(null);
+    const hamburgerRef = useRef(null);
 
     useEffect(() => {
         const checkScreenSize = () => {
@@ -22,6 +24,27 @@ const Header = () => {
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
 
+    useEffect(() => {
+        // Add click event listener to handle clicks outside the menu
+        const handleClickOutside = (event) => {
+            if (menuOpen && 
+                navRef.current && 
+                !navRef.current.contains(event.target) &&
+                hamburgerRef.current && 
+                !hamburgerRef.current.contains(event.target)) {
+                setMenuOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleClickOutside);
+        
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('touchstart', handleClickOutside);
+        };
+    }, [menuOpen]);
+
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
@@ -31,6 +54,7 @@ const Header = () => {
             <div className="header-container">
                 {isMobile && (
                     <button 
+                        ref={hamburgerRef}
                         className="hamburger-menu" 
                         onClick={toggleMenu}
                         aria-label="Toggle navigation menu"
@@ -41,7 +65,10 @@ const Header = () => {
                     </button>
                 )}
                 
-                <nav className={`nav-menu ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}>
+                <nav 
+                    ref={navRef}
+                    className={`nav-menu ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}
+                >
                     <ul>
                         <li><NavLink to="/" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Home</NavLink></li>
                         <li><NavLink to="/social-media" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Social Media</NavLink></li>
