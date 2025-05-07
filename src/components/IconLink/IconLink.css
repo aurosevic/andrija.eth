@@ -12,10 +12,24 @@
     align-items: center;
 }
 
-.icon-link img {
+.icon-link svg {
     transition: transform 0.3s ease;
 }
 
-.icon-link:hover img {
+.icon-link:hover svg {
     transform: scale(1.1);
+}
+
+.dark-theme .icon-link {
+    fill: var(--light-bg);
+    svg {
+        fill: var(--light-bg);
+    }
+}
+
+.light-theme .icon-link {
+    fill: var(--dark-bg);
+    svg {
+        fill: var(--dark-bg);
+    }
 }

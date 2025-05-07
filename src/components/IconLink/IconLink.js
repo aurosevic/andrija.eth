@@ -1,14 +1,14 @@
 import React from 'react';
 import './IconLink.css';
 
-const IconLink = ({ href, IconComponent = null, iconSrc = null, alt, label }) => {
+const IconLink = ({ href, IconComponent = null, iconSrc = null, alt, label, width = "50", height="50" }) => {
   return (
     <div className="main-text icon-link">
       <a href={href} target="_blank" rel="noopener noreferrer">
         {IconComponent ? (
-          <IconComponent />
+          <IconComponent width={width} height={height} />
         ) : (
-          <img src={iconSrc} alt={alt} width="50" height="50" />
+          <img src={iconSrc} alt={alt} width={width} height={height} />
         )}
         <br />
         <span>{label}</span>

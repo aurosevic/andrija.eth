@@ -218,40 +218,10 @@ svg {
   will-change: color, stroke;
 }
 
-/* Specific rules for both light and dark themes to ensure mobile compatibility */
-.dark-theme svg {
-  color: var(--light-text);
-  stroke: var(--light-text);
+.dark-theme {
+    --svg-fill-color: #ffffff;
 }
 
-.light-theme svg {
-  color: var(--dark-text);
-  stroke: var(--dark-text);
-}
-
-/* Ensure SVGs in links follow link colors */
-.dark-theme a svg {
-  color: var(--light-link);
-  stroke: var(--light-link);
-}
-
-.light-theme a svg {
-  color: var(--dark-link);
-  stroke: var(--dark-link);
-}
-
-/* For SVGs in the theme switch that should keep specific colors */
-.sun-icon svg,
-.moon-icon svg {
-  transition: none; /* Don't transition these specific SVGs */
-}
-
-.sun-icon svg {
-  color: #f1c40f !important;
-  stroke: #f1c40f !important;
-}
-
-.moon-icon svg {
-  color: #f1f1f1 !important;
-  stroke: #f1f1f1 !important;
+.light-theme {
+    --svg-fill-color: #2C2D30;
 }

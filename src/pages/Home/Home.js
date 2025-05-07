@@ -3,6 +3,11 @@ import IconLink from '../../components/IconLink/IconLink';
 import GithubIcon from '../../components/icons/GithubIcon';
 
 import './Home.css';
+import LensIcon from "../../components/icons/LensIcon";
+import OrbIcon from "../../components/icons/OrbIcon";
+import LetterboxdIcon from "../../components/icons/LetterboxdIcon";
+import SerializdIcon from "../../components/icons/SerializdIcon";
+import LinkedinIcon from "../../components/icons/LinkedinIcon";
 
 const Home = () => {
     return (
@@ -22,31 +27,31 @@ const Home = () => {
                 />
                 <IconLink
                     href="https://hey.xyz/u/andrija"
-                    iconSrc="/svg/lens.svg"
+                    IconComponent={LensIcon}
                     alt="Lens Profile"
                     label="Lens"
                 />
                 <IconLink
                     href="https://orb.club/@andrija"
-                    iconSrc="/svg/orb.svg"
+                    IconComponent={OrbIcon}
                     alt="Orb Profile"
                     label="Orb"
                 />
                 <IconLink
                     href="https://letterboxd.com/andrija27/"
-                    iconSrc="/svg/letterboxd.svg"
+                    IconComponent={LetterboxdIcon}
                     alt="Letterboxd"
                     label="Letterboxd"
                 />
                 <IconLink
                     href="https://www.serializd.com/user/aurosevic/profile"
-                    iconSrc="/svg/serializd.svg"
+                    IconComponent={SerializdIcon}
                     alt="Serializd"
                     label="Serializd"
                 />
                 <IconLink
                     href="https://www.linkedin.com/in/a-urosevic/"
-                    iconSrc="/svg/linkedin.svg"
+                    IconComponent={LinkedinIcon}
                     alt="LinkedIn"
                     label="LinkedIn"
                 />
