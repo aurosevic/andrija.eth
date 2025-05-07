@@ -1,0 +1,257 @@
+:root {
+    --dark-bg: #16213e;
+    --light-bg: #dbe4ef;
+    --dark-text: #1b262c;
+    --light-text: rgb(130, 169, 249);
+    --light-link: rgb(130, 169, 249);
+    --dark-link: #3d5af1;
+    --light-visited: rgb(164, 252, 245);
+    --dark-visited: #1b9999;
+    --light-hover: rgb(205, 174, 251);
+    --dark-hover: #8c62de;
+    --transition-duration: 1.5s;
+}
+
+html {
+    transition: color var(--transition-duration);
+}
+
+html.dark-theme {
+    color-scheme: dark;
+}
+
+html.light-theme {
+    color-scheme: light;
+}
+
+body {
+    transition: background var(--transition-duration);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.dark-theme body {
+    background: var(--dark-bg);
+}
+
+.light-theme body {
+    background: var(--light-bg);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+}
+
+.dark-theme .main-text {
+    color: var(--light-text);
+}
+
+.light-theme .main-text {
+    color: var(--dark-text);
+}
+
+.main-text {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    transition: color var(--transition-duration);
+}
+
+h1 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 19px;
+}
+
+.dark-theme a {
+    color: var(--light-link);
+}
+
+.light-theme a {
+    color: var(--dark-link);
+}
+
+.dark-theme a:visited {
+    color: var(--light-visited);
+}
+
+.light-theme a:visited {
+    color: var(--dark-visited);
+}
+
+.dark-theme a:hover, .dark-theme a:active, .dark-theme a:focus {
+    color: var(--light-hover);
+}
+
+.light-theme a:hover, .light-theme a:active, .light-theme a:focus {
+    color: var(--dark-hover);
+}
+
+a {
+    transition: color var(--transition-duration);
+}
+
+/* Theme Transition Animation */
+.theme-transition-circle {
+    position: fixed;
+    top: 2.3125rem;
+    right: 3.125rem;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    will-change: width, height, opacity;
+    transform: translate(50%, -50%);
+}
+
+.theme-transition-circle.animate {
+    animation: circleExpand var(--transition-duration) ease-out forwards;
+}
+
+@keyframes circleExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 400vmax;
+        height: 400vmax;
+        opacity: 1;
+    }
+}
+
+/* For light theme transitions */
+html.theme-changing.light-theme .main-text {
+    animation-name: darkToLightText;
+}
+
+/* For dark theme transitions */
+html.theme-changing.dark-theme .main-text {
+    animation-name: lightToDarkText;
+}
+
+/* Text color transition animations */
+@keyframes darkToLightText {
+    0% {
+        color: var(--light-text);
+    }
+    100% {
+        color: var(--dark-text);
+    }
+}
+
+@keyframes lightToDarkText {
+    0% {
+        color: var(--dark-text);
+    }
+    100% {
+        color: var(--light-text);
+    }
+}
+
+/* Similar animations for links */
+html.theme-changing.light-theme a {
+    animation-name: darkToLightLink;
+}
+
+html.theme-changing.dark-theme a {
+    animation-name: lightToDarkLink;
+}
+
+@keyframes darkToLightLink {
+    0% {
+        color: var(--light-link);
+    }
+    100% {
+        color: var(--dark-link);
+    }
+}
+
+@keyframes lightToDarkLink {
+    0% {
+        color: var(--dark-link);
+    }
+    100% {
+        color: var(--light-link);
+    }
+}
+
+/* Icon Container */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.icon-container div {
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .icon-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .icon-container {
+        gap: 15px;
+    }
+}
+/* SVG Theme Color Transitions */
+svg {
+  transition: color var(--transition-duration), stroke var(--transition-duration);
+  will-change: color, stroke;
+}
+
+/* Specific rules for both light and dark themes to ensure mobile compatibility */
+.dark-theme svg {
+  color: var(--light-text);
+  stroke: var(--light-text);
+}
+
+.light-theme svg {
+  color: var(--dark-text);
+  stroke: var(--dark-text);
+}
+
+/* Ensure SVGs in links follow link colors */
+.dark-theme a svg {
+  color: var(--light-link);
+  stroke: var(--light-link);
+}
+
+.light-theme a svg {
+  color: var(--dark-link);
+  stroke: var(--dark-link);
+}
+
+/* For SVGs in the theme switch that should keep specific colors */
+.sun-icon svg,
+.moon-icon svg {
+  transition: none; /* Don't transition these specific SVGs */
+}
+
+.sun-icon svg {
+  color: #f1c40f !important;
+  stroke: #f1c40f !important;
+}
+
+.moon-icon svg {
+  color: #f1f1f1 !important;
+  stroke: #f1f1f1 !important;
+}

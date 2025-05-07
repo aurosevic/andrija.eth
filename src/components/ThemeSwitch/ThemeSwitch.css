@@ -1,0 +1,77 @@
+.theme-switch-wrapper {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 11;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 2.125em;
+    position: relative;
+    width: 4em;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: rgba(73, 84, 100, 0.5);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 2.125em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.3125em;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 0.25em;
+    content: "";
+    height: 1.625em;
+    left: auto;
+    position: absolute;
+    transition: .4s;
+    width: 1.625em;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.sun-icon, .moon-icon {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun-icon svg, .moon-icon svg {
+    width: 75%;
+    height: 75%;
+}
+
+.sun-icon {
+    color: #f1c40f;
+    margin-left: auto;
+}
+
+.moon-icon {
+    color: #f1f1f1;
+}
+
+input:checked + .slider {
+    background-color: rgba(130, 169, 249, 0.5);
+}
+
+input:checked + .slider:before {
+    transform: translateX(1.75em);
+}
