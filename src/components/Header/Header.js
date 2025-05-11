@@ -55,7 +55,7 @@ const Header = () => {
                 {isMobile && (
                     <button 
                         ref={hamburgerRef}
-                        className="hamburger-menu" 
+                        className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
                         onClick={toggleMenu}
                         aria-label="Toggle navigation menu"
                     >

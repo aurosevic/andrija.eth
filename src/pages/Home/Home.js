@@ -1,13 +1,13 @@
 import React from 'react';
 import IconLink from '../../components/IconLink/IconLink';
-import GithubIcon from '../../components/icons/GithubIcon';
+import GithubIcon from '../../components/Icons/GithubIcon';
 
 import './Home.css';
-import LensIcon from "../../components/icons/LensIcon";
-import OrbIcon from "../../components/icons/OrbIcon";
-import LetterboxdIcon from "../../components/icons/LetterboxdIcon";
-import SerializdIcon from "../../components/icons/SerializdIcon";
-import LinkedinIcon from "../../components/icons/LinkedinIcon";
+import LensIcon from "../../components/Icons/LensIcon";
+import OrbIcon from "../../components/Icons/OrbIcon";
+import LetterboxdIcon from "../../components/Icons/LetterboxdIcon";
+import SerializdIcon from "../../components/Icons/SerializdIcon";
+import LinkedinIcon from "../../components/Icons/LinkedinIcon";
 
 const Home = () => {
     return (

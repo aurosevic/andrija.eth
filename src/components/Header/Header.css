@@ -71,7 +71,8 @@
     height: 3px;
     width: 100%;
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
 }
 
 .dark-theme .hamburger-menu span {
@@ -80,6 +81,20 @@
 
 .light-theme .hamburger-menu span {
     background-color: var(--dark-bg);
+}
+
+/* Hamburger to X animation */
+.hamburger-menu.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Responsive Navigation */
@@ -126,19 +141,6 @@
 
     .nav-menu.mobile li {
         margin: 15px 0;
-    }
-
-    /* When menu is open, change hamburger to X */
-    .nav-menu.mobile.open + .hamburger-menu span:nth-child(1) {
-        transform: translateY(10px) rotate(45deg);
-    }
-
-    .nav-menu.mobile.open + .hamburger-menu span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .nav-menu.mobile.open + .hamburger-menu span:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
     }
 }
 
