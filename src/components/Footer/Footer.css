@@ -2,9 +2,8 @@
     padding: 2.75rem 0;
     text-align: center;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
+    margin-top: auto;
 }
 
 .footer p {
