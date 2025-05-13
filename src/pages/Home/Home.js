@@ -14,9 +14,7 @@ const Home = () => {
         <div className="container">
             <h1 className="main-text">Andrija Urošević</h1>
             <p className="main-text">
-                <a href="https://andrija.eth.limo/" target="_blank" rel="noopener noreferrer">
-                    andrija.eth
-                </a>
+                Human & Computer Vision Engineer
             </p>
             <div className="icon-container">
                 <IconLink
