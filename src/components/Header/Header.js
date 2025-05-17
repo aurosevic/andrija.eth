@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {NavLink} from 'react-router-dom';
 import ThemeSwitch from '../ThemeSwitch/ThemeSwitch';
 import './Header.css';
 
@@ -13,13 +13,13 @@ const Header = () => {
         const checkScreenSize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
-        
+
         // Check on an initial load
         checkScreenSize();
-        
+
         // Add event listener for resize
         window.addEventListener('resize', checkScreenSize);
-        
+
         // Cleanup event listener
         return () => window.removeEventListener('resize', checkScreenSize);
     }, []);
@@ -27,10 +27,10 @@ const Header = () => {
     useEffect(() => {
         // Add click event listener to handle clicks outside the menu
         const handleClickOutside = (event) => {
-            if (menuOpen && 
-                navRef.current && 
+            if (menuOpen &&
+                navRef.current &&
                 !navRef.current.contains(event.target) &&
-                hamburgerRef.current && 
+                hamburgerRef.current &&
                 !hamburgerRef.current.contains(event.target)) {
                 setMenuOpen(false);
             }
@@ -38,7 +38,7 @@ const Header = () => {
 
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
-        
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
@@ -53,7 +53,7 @@ const Header = () => {
         <header className="site-header">
             <div className="header-container">
                 {isMobile && (
-                    <button 
+                    <button
                         ref={hamburgerRef}
                         className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
                         onClick={toggleMenu}
@@ -64,22 +64,34 @@ const Header = () => {
                         <span></span>
                     </button>
                 )}
-                
-                <nav 
+
+                <nav
                     ref={navRef}
                     className={`nav-menu ${isMobile ? 'mobile' : ''} ${menuOpen ? 'open' : ''}`}
                 >
                     <ul>
-                        <li><NavLink to="/" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Home</NavLink></li>
-                        <li><NavLink to="/social-media" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Social Media</NavLink></li>
-                        <li><NavLink to="/resume" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Resume</NavLink></li>
-                        <li><NavLink to="/software" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Software I Use</NavLink></li>
-                        <li><NavLink to="/hardware" className="main-text" onClick={() => isMobile && setMenuOpen(false)}>Hardware I Use</NavLink></li>
+                        <li><NavLink to="/" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>Home</NavLink></li>
+                        <li><NavLink to="/social-media" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>Social
+                            Media<sup style={{fontSize: '0.7em'}}>(soon)</sup></NavLink></li>
+                        <li><NavLink to="/resume" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>Resume<sup
+                            style={{fontSize: '0.7em'}}>(soon)</sup></NavLink></li>
+                        <li><NavLink to="/software" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>Software I Use<sup
+                            style={{fontSize: '0.7em'}}>(soon)</sup></NavLink></li>
+                        <li><NavLink to="/hardware" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>Hardware I Use<sup
+                            style={{fontSize: '0.7em'}}>(soon)</sup></NavLink></li>
+                        <li><NavLink to="/about-me" className="main-text"
+                                     onClick={() => isMobile && setMenuOpen(false)}>About Me<sup
+                            style={{fontSize: '0.7em'}}>(soon)</sup></NavLink></li>
                     </ul>
                 </nav>
-                
+
                 <div className="theme-switch-container">
-                    <ThemeSwitch />
+                    <ThemeSwitch/>
                 </div>
             </div>
         </header>
